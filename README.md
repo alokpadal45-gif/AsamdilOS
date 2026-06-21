@@ -1,10 +1,8 @@
-# 🖥️ AsamdilOS
+# AsamdilOS
 
-> A small 32-bit x86 operating system built from scratch with a custom bootloader, a C kernel, an interactive command shell, an in-memory file system, and simulated memory paging and CPU scheduling.
+A small 32-bit x86 operating system built from scratch with a custom bootloader, a C kernel, an interactive command shell, an in-memory file system, and simulated memory paging and CPU scheduling.
 
----
-
-## 👥 Team & Responsibilities
+## Team & Responsibilities
 
 | Student | Area | Files |
 |---|---|---|
@@ -14,11 +12,9 @@
 
 > `kernel/string.c` (helper string/memory functions) is shared by everyone.
 
----
+## Requirements
 
-## 1. Requirements
-
-> Linux is strongly recommended — WSL2 on Windows works perfectly too.
+Linux is strongly recommended. WSL2 on Windows works perfectly too.
 
 Install the following tools:
 
@@ -33,9 +29,7 @@ sudo apt install -y build-essential nasm qemu-system-x86 gcc-multilib
 | `gcc-multilib` | Lets gcc compile 32-bit (`-m32`) code on a 64-bit machine |
 | `qemu-system-x86` | Runs the finished OS image |
 
----
-
-## 2. Building and Running
+## Building and Running
 
 Open this folder in VS Code (`File > Open Folder...`).
 
@@ -54,9 +48,7 @@ Press **Ctrl+Shift+B** (or `Terminal > Run Task...`) and choose:
 - **Build AsamdilOS** — compiles everything into `os-image.bin`
 - **Run AsamdilOS in QEMU** — builds and boots the OS in a QEMU window
 
----
-
-## 3. Running in VirtualBox *(optional — "real bootable OS" demo)*
+## Running in VirtualBox (optional)
 
 1. Run `make` to produce `os-image.bin`
 2. Convert it to a VDI disk image:
@@ -70,9 +62,7 @@ VBoxManage convertfromraw os-image.bin os-image.vdi --format VDI
    - Attach `os-image.vdi` as the primary hard disk
 4. Boot the VM — AsamdilOS will start
 
----
-
-## 4. Project Structure
+## Project Structure
 
 ```
 AsamdilOS/
@@ -93,22 +83,18 @@ AsamdilOS/
 └── README.md
 ```
 
----
+## Features
 
-## 5. Features
+- Custom bootloader that transitions the CPU from 16-bit real mode to 32-bit protected mode
+- Bare-metal C kernel with no standard library
+- VGA text-mode display driver
+- Interrupt-driven PS/2 keyboard driver
+- Simulated memory paging and page-frame allocator
+- Round-robin CPU scheduler
+- In-memory flat file system
+- Interactive command shell
+- RTC driver for reading timestamps
 
-- **Custom Bootloader** — transitions CPU from 16-bit real mode to 32-bit protected mode
-- **C Kernel** — bare-metal kernel with no standard library dependency
-- **VGA Text Display** — direct memory-mapped screen output
-- **PS/2 Keyboard Input** — interrupt-driven keyboard driver
-- **Memory Paging** — simulated page-frame allocation and virtual memory mapping
-- **CPU Scheduling** — round-robin process scheduler
-- **In-Memory File System** — simple flat file system stored entirely in RAM
-- **Interactive Shell** — command-line interface for interacting with the OS
-- **RTC Driver** — reads real-time clock for timestamps
+## License
 
----
-
-## 6. License
-
-This project was developed for educational purposes.
+This project was made for educational purposes.
